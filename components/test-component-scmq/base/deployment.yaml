@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app.kubernetes.io/created-by: application-service
+    app.kubernetes.io/instance: test-component-scmq
+    app.kubernetes.io/managed-by: kustomize
+    app.kubernetes.io/name: test-component-scmq
+    app.kubernetes.io/part-of: test-app-itsj
+  name: test-component-scmq
+  namespace: build-e2e-zjja-tenant
+spec:
+  replicas: 1
+  revisionHistoryLimit: 0
+  selector:
+    matchLabels:
+      app: python-app
+      app.kubernetes.io/instance: test-component-scmq
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: python-app
+        app.kubernetes.io/instance: test-component-scmq
+    spec:
+      containers:
+      - image: quay.io/redhat-appstudio-qe/test-images:b9e689f562bb46d3b2378c780b0432ba
+        name: my-python
+        ports:
+        - containerPort: 8081
+          name: http
+          protocol: TCP
+        resources:
+          limits:
+            cpu: 100m
+            memory: 100Mi
+          requests:
+            cpu: 10m
+            memory: 50Mi
+status: {}
