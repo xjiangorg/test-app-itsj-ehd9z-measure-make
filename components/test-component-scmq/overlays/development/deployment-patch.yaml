@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  name: test-component-scmq
+  namespace: build-e2e-zjja-tenant
+spec:
+  replicas: 1
+  selector: {}
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+    spec:
+      containers:
+      - image: quay.io/redhat-appstudio-qe/test-images@sha256:fa459f38fbbb74dbdfc76fbf10f335a80f2647948ac0e11ee9a6d3e834013567
+        name: my-python
+        resources: {}
+status: {}
